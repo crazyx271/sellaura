@@ -1,0 +1,17 @@
+{
+  "name": "AURA",
+  "short_name": "AURA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#12141C",
+  "theme_color": "#12141C",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

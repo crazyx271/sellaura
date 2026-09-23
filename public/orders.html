@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12141c">
+  <meta name="description" content="Заказы AURA, сохранённые в этом браузере.">
+  <meta name="robots" content="noindex">
+  <title>Заказы — AURA</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="page-root">
+    <svg class="svg-defs" aria-hidden="true">
+      <filter id="liquid-refract" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
+    <div class="wallpaper" aria-hidden="true">
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+      <div class="blob blob-c"></div>
+      <div class="blob blob-d"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-8">
+      <nav class="nav-island glass sticky top-5 z-40 px-5 sm:px-6 py-3.5" aria-label="Основная навигация">
+        <div class="flex items-center justify-between gap-4">
+          <a href="index.html" class="brand shrink-0"><img src="assets/logo.svg" width="32" height="32" alt="" class="brand-mark">AURA</a>
+          <div class="hidden lg:flex items-center gap-7 text-[15px] font-medium text-text-2">
+            <a href="index.html#catalog" class="hover:text-text transition-colors">Витрина</a>
+            <a href="index.html?platform=max#catalog" class="hover:text-text transition-colors">MAX</a>
+            <a href="index.html?platform=tg#catalog" class="hover:text-text transition-colors">Telegram</a>
+            <a href="index.html#how" class="hover:text-text transition-colors">Гарантии</a>
+            <a href="support.html" class="hover:text-text transition-colors">Поддержка</a>
+          </div>
+          <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+            <a href="orders.html" class="hidden sm:inline font-medium text-[15px] text-text">Заказы</a>
+            <a href="index.html#catalog" class="glass-btn px-5 py-2.5 text-sm">Купить</a>
+            <button type="button" class="nav-toggle" id="nav-menu-btn" aria-expanded="false" aria-controls="mobile-nav"><span class="sr-only">Меню</span><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+          </div>
+        </div>
+        <div id="mobile-nav" class="mobile-nav" hidden>
+          <a href="index.html#catalog">Витрина</a>
+          <a href="index.html?platform=max#catalog">MAX</a>
+          <a href="index.html?platform=tg#catalog">Telegram</a>
+          <a href="index.html#how">Гарантии</a>
+          <a href="support.html">Поддержка</a>
+          <a href="orders.html">Заказы</a>
+        </div>
+      </nav>
+      <main class="flex flex-col gap-6 pb-8">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-semibold text-tight mb-3">Заказы</h1>
+          <p class="text-text-2 max-w-2xl">Список хранится только в этом браузере. На сервер он не отправляется: чтобы продавец увидел оплату, передайте хеш через поддержку.</p>
+        </div>
+        <section id="orders-empty" class="glass p-8" hidden>
+          <p class="text-lg font-semibold mb-2 relative z-10">Заказов пока нет</p>
+          <p class="text-text-2 mb-5 relative z-10">Выберите аккаунт в витрине и оформите оплату.</p>
+          <a href="index.html#catalog" class="glass-btn px-5 py-2.5 text-sm">Открыть витрину</a>
+        </section>
+        <section id="orders-list" class="grid grid-cols-1 md:grid-cols-2 gap-5" hidden></section>
+      </main>
+      <footer class="glass glass-pill px-6 sm:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
+        <a href="index.html" class="brand"><img src="assets/logo.svg" width="22" height="22" alt="" class="brand-mark brand-mark-sm"><span class="font-semibold text-text-3 text-sm">© AURA 2026</span></a>
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm font-medium">
+          <a href="oferta.html" class="text-text-2 hover:text-text transition-colors">Оферта</a>
+          <a href="privacy.html" class="text-text-2 hover:text-text transition-colors">Политика</a>
+          <a href="support.html" class="text-text-2 hover:text-text transition-colors">Поддержка</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="js/config.js" defer></script>
+  <script src="js/orders-store.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/orders.js" defer></script>
+</body>
+</html>
