@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/": {
+      "targetKind": "brand-new",
+      "projectId": "e7e2b197-662e-42f3-9e45-fae49a667833",
+      "activeDraftId": "32343c50-9574-4c2a-926a-177a35b0b47e",
+      "designSystemPath": ".superdesign/design-system.md",
+      "contextFiles": [".superdesign/design-system.md"],
+      "fingerprints": {
+        ".superdesign/design-system.md": "a35d4391f40f40821e32f784bed719792949d316ab6512acc52033348ef07525"
+      },
+      "drafts": {
+        "32343c50-9574-4c2a-926a-177a35b0b47e": {
+          "title": "AURA — Готовые аккаунты MAX и Telegram",
+          "visualDirection": "Apple Liquid Glass with stronger refraction, 6-card catalog, country/age filters",
+          "currentVersion": 6
+        }
+      },
+      "updatedAt": "2026-09-16T09:10:00.000Z"
+    }
+  }
+}
