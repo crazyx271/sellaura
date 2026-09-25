@@ -20,7 +20,7 @@
       ageDays: 2555,
       trust: 97,
       stock: 8,
-      price: 2190,
+      price: 1500,
       blurb: "Проверенный аккаунт · РФ"
     },
     {
@@ -34,7 +34,7 @@
       ageDays: 240,
       trust: 91,
       stock: 14,
-      price: 1640,
+      price: 1000,
       blurb: "Проверенный аккаунт · КЗ"
     },
     {
@@ -48,7 +48,7 @@
       ageDays: 1825,
       trust: 94,
       stock: 4,
-      price: 3200,
+      price: 1500,
       blurb: "Проверенный аккаунт · РФ"
     },
     {
@@ -62,7 +62,7 @@
       ageDays: 730,
       trust: 88,
       stock: 6,
-      price: 2780,
+      price: 1000,
       blurb: "Проверенный аккаунт · РФ"
     },
     {
@@ -76,7 +76,7 @@
       ageDays: 2190,
       trust: 96,
       stock: 3,
-      price: 4100,
+      price: 1500,
       blurb: "Проверенный аккаунт · EU"
     },
     {
@@ -90,7 +90,7 @@
       ageDays: 120,
       trust: 84,
       stock: 22,
-      price: 1290,
+      price: 1000,
       blurb: "Проверенный аккаунт · РФ"
     }
   ];

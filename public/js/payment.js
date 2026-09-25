@@ -40,7 +40,7 @@
     const v = String(value || "").trim();
     if (v.length < 20 || v.length > 128) return false;
     if (/\s/.test(v)) return false;
-    return /^[A-Za-z0-9:_+\/=.-]+$/.test(v);
+    return /^[A-Za-z0-9_:+/=.-]+$/.test(v);
   }
 
   function isContact(value) {
@@ -61,14 +61,40 @@
     return v.startsWith("@") ? v : "@" + v;
   }
 
+  function paymentMethods(config) {
+    const payment = (config && config.payment) || {};
+    const listed = Array.isArray(payment.methods) ? payment.methods : [];
+    const ready = listed.filter(function (method) {
+      return isWallet(method.wallet) && String(method.network || "").trim() && String(method.asset || payment.asset || "").trim();
+    });
+    if (ready.length) return ready;
+    if (isWallet(payment.wallet) && String(payment.network || "").trim()) {
+      return [{
+        id: "default",
+        label: payment.network,
+        network: payment.network,
+        asset: payment.asset || "USDT",
+        wallet: String(payment.wallet).trim(),
+        kind: payment.kind || "trc20"
+      }];
+    }
+    return [];
+  }
+
   function paymentReady(config) {
     const payment = (config && config.payment) || {};
-    return Boolean(
-      isWallet(payment.wallet) &&
-      Number(payment.rubPerUnit) > 0 &&
-      String(payment.asset || "").trim() &&
-      String(payment.network || "").trim()
-    );
+    return paymentMethods(config).length > 0 && Number(payment.rubPerUnit) > 0;
+  }
+
+  function toUnits(amount, decimals) {
+    const places = Number(decimals);
+    if (!Number.isInteger(places) || places < 0 || places > 18) {
+      throw new Error("Некорректная точность токена");
+    }
+    const text = Number(amount).toFixed(2);
+    const parts = text.split(".");
+    const frac = (parts[1] + "0".repeat(places)).slice(0, places);
+    return BigInt(parts[0] + frac);
   }
 
   function proofText(order) {
@@ -92,7 +118,9 @@
     isContact: isContact,
     isTxHash: isTxHash,
     normalizeContact: normalizeContact,
+    paymentMethods: paymentMethods,
     paymentReady: paymentReady,
+    toUnits: toUnits,
     proofText: proofText
   };
 });

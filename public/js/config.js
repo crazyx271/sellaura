@@ -1,17 +1,8 @@
 /**
  * Публичные настройки магазина.
- * Сюда можно вписать только адрес кошелька для приёма оплаты.
  * Секретную фразу, приватный ключ и seed сюда писать нельзя — файл отдаётся всем посетителям.
- *
- * Перед запуском оплаты заполните:
- * - payment.wallet — публичный адрес
- * - payment.asset и payment.network — монета и сеть, они должны совпадать с предупреждением
- * - payment.rubPerUnit — сколько рублей стоит 1 единица монеты (с вашей маржой)
- * - supportTelegram или supportEmail — куда покупатель отправит хеш транзакции
- * - legalName, inn, city — реквизиты для оферты
- * - siteUrl — домен с https, без слэша на конце
  */
-window.AURA_CONFIG = {
+(typeof globalThis !== "undefined" ? globalThis : window).AURA_CONFIG = {
   siteUrl: "",
   supportTelegram: "",
   supportEmail: "",
@@ -20,9 +11,40 @@ window.AURA_CONFIG = {
   city: "",
   payment: {
     asset: "USDT",
-    network: "TRC-20",
-    wallet: "",
     rubPerUnit: 95,
-    networkWarning: "Отправляйте только USDT в сети TRON (TRC-20). Перевод другой монетой или в другой сети не зачисляется и не возвращается автоматически."
+    methods: [
+      {
+        id: "trc20",
+        label: "TRC-20",
+        network: "TRC-20",
+        asset: "USDT",
+        wallet: "TSDPFRPtMKBXfR3k7LRkE5WqQwYnDSXVRg",
+        kind: "trc20"
+      },
+      {
+        id: "bsc",
+        label: "BSC",
+        network: "BSC",
+        asset: "USDT",
+        wallet: "0xfbddcbb8cc04e5ef34b76b2bf0ff50aefa64de6b",
+        kind: "bsc"
+      },
+      {
+        id: "ton",
+        label: "TON",
+        network: "TON",
+        asset: "USDT",
+        wallet: "UQCzDVl6bA4ZGRMuVMs4_0Jl9pIc_UpCHYwwbVPluNlTbRdf",
+        kind: "ton"
+      },
+      {
+        id: "sol",
+        label: "SOL",
+        network: "Solana",
+        asset: "USDT",
+        wallet: "GzRW56R9KG3teC6uHTbx6r62uX8d5bMDdTFiXr1qPn4i",
+        kind: "sol"
+      }
+    ]
   }
 };

@@ -10,7 +10,9 @@
   emptyEl.hidden = true;
   listEl.hidden = false;
   const statusLabel = {
-    awaiting_confirmation: "Ожидает подтверждения"
+    awaiting_confirmation: "Ожидает подтверждения",
+    checking: "Проверяем транзакцию",
+    paid_seen: "Перевод найден"
   };
   orders.forEach(function (order) {
     const card = document.createElement("article");

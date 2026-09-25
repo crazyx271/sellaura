@@ -1,5 +1,6 @@
 (function () {
   const pay = window.AuraPay;
+  const chain = window.AuraChain;
   const catalog = window.AURA_CATALOG;
   const config = window.AURA_CONFIG || {};
   const payment = config.payment || {};
@@ -17,8 +18,10 @@
   if (missing) missing.hidden = true;
   if (panel) panel.hidden = false;
 
-  const ready = pay.paymentReady(config);
+  const methods = pay.paymentMethods(config);
+  const ready = methods.length > 0;
   let qty = 1;
+  let method = methods[0] || null;
 
   const platformEl = document.getElementById("co-platform");
   const cityEl = document.getElementById("co-city");
@@ -32,15 +35,16 @@
   const assetNodes = document.querySelectorAll("[data-asset]");
   const networkEl = document.getElementById("co-network");
   const rateEl = document.getElementById("co-rate");
-  const warningEl = document.getElementById("co-warning");
   const walletEl = document.getElementById("co-wallet");
   const copyWalletBtn = document.getElementById("copy-wallet");
   const copyAmountBtn = document.getElementById("copy-amount");
   const banner = document.getElementById("pay-off");
   const payBox = document.getElementById("pay-box");
+  const methodsEl = document.getElementById("pay-methods");
   const qtyValue = document.getElementById("qty-value");
   const form = document.getElementById("pay-form");
   const errorEl = document.getElementById("form-error");
+  const checkEl = document.getElementById("pay-check");
   const successEl = document.getElementById("pay-success");
   const submitBtn = document.getElementById("pay-submit");
 
@@ -59,14 +63,23 @@
   assetNodes.forEach(function (node) {
     node.textContent = payment.asset || "USDT";
   });
-  if (networkEl) networkEl.textContent = payment.network || "";
   if (rateEl) {
-    rateEl.textContent = "Курс магазина: 1 " + (payment.asset || "USDT") + " = " + pay.formatRub(Number(payment.rubPerUnit) || 0) + ". Итог округляется вверх до 0,01.";
+    rateEl.textContent = "Курс магазина: 1 USDT = " + pay.formatRub(Number(payment.rubPerUnit) || 0) + ". Итог округляется вверх до 0,01.";
   }
-  if (warningEl) warningEl.textContent = payment.networkWarning || "";
 
   function quote() {
     return pay.quoteCrypto(product.price * qty, payment.rubPerUnit);
+  }
+
+  function paintMethod() {
+    if (!method) return;
+    if (networkEl) networkEl.textContent = method.network;
+    if (walletEl) walletEl.textContent = method.wallet;
+    methodsEl.querySelectorAll("button").forEach(function (button) {
+      const on = button.dataset.method === method.id;
+      button.classList.toggle("chip-active", on);
+      button.setAttribute("aria-checked", String(on));
+    });
   }
 
   function paintQty() {
@@ -81,6 +94,20 @@
     document.getElementById("qty-inc").disabled = qty >= product.stock;
   }
 
+  methods.forEach(function (item) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "chip";
+    button.dataset.method = item.id;
+    button.setAttribute("role", "radio");
+    button.textContent = item.label;
+    button.addEventListener("click", function () {
+      method = item;
+      paintMethod();
+    });
+    methodsEl.appendChild(button);
+  });
+
   document.getElementById("qty-dec").addEventListener("click", function () {
     qty = Math.max(1, qty - 1);
     paintQty();
@@ -90,12 +117,11 @@
     paintQty();
   });
   paintQty();
+  paintMethod();
 
   if (banner) banner.hidden = ready;
   if (payBox) payBox.hidden = !ready;
   if (submitBtn) submitBtn.disabled = !ready;
-
-  if (ready && walletEl) walletEl.textContent = String(payment.wallet).trim();
 
   async function copyText(text, button) {
     try {
@@ -119,8 +145,8 @@
 
   if (copyWalletBtn) {
     copyWalletBtn.addEventListener("click", function () {
-      if (!ready) return;
-      copyText(String(payment.wallet).trim(), copyWalletBtn);
+      if (!method) return;
+      copyText(method.wallet, copyWalletBtn);
     });
   }
   if (copyAmountBtn) {
@@ -135,49 +161,20 @@
     errorEl.textContent = message || "";
   }
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (!ready) {
-      showError("Оплата ещё не подключена.");
-      return;
-    }
-    const contactRaw = document.getElementById("buyer-contact").value;
-    const txRaw = document.getElementById("tx-hash").value.trim();
-    if (!pay.isContact(contactRaw)) {
-      showError("Укажите Telegram в формате @username или электронную почту.");
-      return;
-    }
-    if (!pay.isTxHash(txRaw)) {
-      showError("Хеш транзакции — это 32–128 латинских букв и цифр из кошелька, без пробелов.");
-      return;
-    }
-    showError("");
-    const amount = quote();
-    const order = {
-      id: pay.createOrderId(),
-      productId: product.id,
-      title: product.platformLabel + " · " + product.city + " · " + product.ageLabel,
-      qty: qty,
-      priceRub: product.price * qty,
-      amountCrypto: pay.formatCrypto(amount),
-      asset: payment.asset,
-      network: payment.network,
-      wallet: String(payment.wallet).trim(),
-      contact: pay.normalizeContact(contactRaw),
-      txHash: txRaw,
-      createdAt: new Date().toISOString(),
-      status: "awaiting_confirmation"
-    };
-    try {
-      window.AuraOrders.add(order);
-    } catch (error) {
-      showError("Не удалось сохранить заказ в этом браузере. Разрешите локальное хранилище и попробуйте ещё раз.");
-      return;
-    }
-    const proof = pay.proofText(order);
+  function usedHashes() {
+    return window.AuraOrders.list().map(function (order) { return order.txHash; }).filter(Boolean);
+  }
+
+  function showSuccess(order) {
+    const found = order.status === "paid_seen";
     form.hidden = true;
+    if (checkEl) checkEl.hidden = true;
     successEl.hidden = false;
     document.getElementById("success-id").textContent = order.id;
+    document.getElementById("success-status").textContent = found
+      ? "Перевод найден в сети " + order.network + ". Доступ отправим на контакт из заказа."
+      : "Перевод пока не найден. Если транзакция только что ушла, подождите подтверждения сети и проверьте заказ ещё раз.";
+    const proof = pay.proofText(order);
     document.getElementById("success-proof").textContent = proof;
     const copyProof = document.getElementById("copy-proof");
     copyProof.addEventListener("click", function () {
@@ -196,9 +193,60 @@
       mailLink.href = "mailto:" + email + "?subject=" + encodeURIComponent("Заказ " + order.id) + "&body=" + encodeURIComponent(proof);
     }
     const hint = document.getElementById("success-hint");
-    if (!tgName && !email && hint) {
-      hint.hidden = false;
-    }
+    if (!tgName && !email && hint) hint.hidden = false;
     successEl.querySelector("h2").focus();
+  }
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    if (!ready || !method) {
+      showError("Оплата ещё не подключена.");
+      return;
+    }
+    const contactRaw = document.getElementById("buyer-contact").value;
+    if (!pay.isContact(contactRaw)) {
+      showError("Укажите Telegram в формате @username или электронную почту.");
+      return;
+    }
+    showError("");
+    submitBtn.disabled = true;
+    if (checkEl) {
+      checkEl.hidden = false;
+      checkEl.textContent = "Проверяем входящий USDT в сети " + method.network + ".";
+    }
+    const amount = quote();
+    let found = null;
+    try {
+      found = await chain.findIncoming(method, amount, usedHashes());
+    } catch (error) {
+      found = null;
+      if (checkEl) {
+        checkEl.textContent = "Сеть сейчас не ответила. Заказ сохранён, проверку можно повторить из раздела «Заказы».";
+      }
+    }
+    const order = {
+      id: pay.createOrderId(),
+      productId: product.id,
+      title: product.platformLabel + " · " + product.city + " · " + product.ageLabel,
+      qty: qty,
+      priceRub: product.price * qty,
+      amountCrypto: pay.formatCrypto(amount),
+      asset: method.asset,
+      network: method.network,
+      wallet: method.wallet,
+      kind: method.kind,
+      contact: pay.normalizeContact(contactRaw),
+      txHash: found ? found.txHash : "",
+      createdAt: new Date().toISOString(),
+      status: found ? "paid_seen" : "checking"
+    };
+    try {
+      window.AuraOrders.add(order);
+    } catch (error) {
+      showError("Не удалось сохранить заказ в этом браузере. Разрешите локальное хранилище и попробуйте ещё раз.");
+      submitBtn.disabled = false;
+      return;
+    }
+    showSuccess(order);
   });
 })();

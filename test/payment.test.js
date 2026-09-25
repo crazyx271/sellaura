@@ -36,6 +36,17 @@ test("payment stays closed until a real wallet is set", () => {
   }), true);
 });
 
+test("accepts the four published USDT networks", () => {
+  require("../public/js/config.js");
+  const methods = pay.paymentMethods(global.AURA_CONFIG);
+  assert.equal(methods.length, 4);
+  assert.deepEqual(methods.map((item) => item.id), ["trc20", "bsc", "ton", "sol"]);
+  methods.forEach((item) => assert.equal(pay.isWallet(item.wallet), true));
+  assert.equal(pay.paymentReady(global.AURA_CONFIG), true);
+  assert.equal(pay.quoteCrypto(1500, 95), 15.79);
+  assert.equal(pay.quoteCrypto(1000, 95), 10.53);
+});
+
 test("builds a proof the seller can match", () => {
   const text = pay.proofText({
     id: "AURA-1",
