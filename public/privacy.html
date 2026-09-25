@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12141c">
+  <meta name="description" content="Политика обработки данных магазина AURA.">
+  <meta name="robots" content="index,follow">
+  <title>Политика — AURA</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="page-root">
+    <svg class="svg-defs" aria-hidden="true">
+      <filter id="liquid-refract" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
+    <div class="wallpaper" aria-hidden="true">
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+      <div class="blob blob-c"></div>
+      <div class="blob blob-d"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-8">
+      <nav class="nav-island glass sticky top-5 z-40 px-5 sm:px-6 py-3.5" aria-label="Основная навигация">
+        <div class="flex items-center justify-between gap-4">
+          <a href="/" class="brand shrink-0"><img src="assets/logo.svg" width="32" height="32" alt="" class="brand-mark">AURA</a>
+          <div class="hidden lg:flex items-center gap-7 text-[15px] font-medium text-text-2">
+            <a href="/#catalog" class="hover:text-text transition-colors">Витрина</a>
+            <a href="/?platform=max#catalog" class="hover:text-text transition-colors">MAX</a>
+            <a href="/?platform=tg#catalog" class="hover:text-text transition-colors">Telegram</a>
+            <a href="/#how" class="hover:text-text transition-colors">Гарантии</a>
+            <a href="support.html" class="hover:text-text transition-colors">Поддержка</a>
+          </div>
+          <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+            <a href="orders.html" class="hidden sm:inline font-medium text-[15px] text-text-2 hover:text-text transition-colors">Заказы</a>
+            <a href="/#catalog" class="glass-btn px-5 py-2.5 text-sm">Купить</a>
+            <button type="button" class="nav-toggle" id="nav-menu-btn" aria-expanded="false" aria-controls="mobile-nav"><span class="sr-only">Меню</span><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+          </div>
+        </div>
+        <div id="mobile-nav" class="mobile-nav" hidden>
+          <a href="/#catalog">Витрина</a>
+          <a href="/?platform=max#catalog">MAX</a>
+          <a href="/?platform=tg#catalog">Telegram</a>
+          <a href="/#how">Гарантии</a>
+          <a href="support.html">Поддержка</a>
+          <a href="orders.html">Заказы</a>
+        </div>
+      </nav>
+      <main class="max-w-3xl w-full mx-auto pb-8">
+        <article class="glass p-7 sm:p-10 prose-legal">
+          <p class="meta text-text-3 relative z-10">Редакция от 23 сентября 2026</p>
+          <h1 class="text-4xl font-semibold text-tight mt-3 mb-4 relative z-10">Политика обработки данных</h1>
+          <p class="relative z-10">Сайт не ведёт серверную базу покупателей и не подключает стороннюю аналитику. Ниже — что реально происходит с данными.</p>
+          <h2 class="relative z-10">Какие данные появляются</h2>
+          <ul class="relative z-10">
+            <li>Контакт, который вы сами вводите: Telegram или почта.</li>
+            <li>Хеш криптоперевода и параметры заказа: товар, количество, сумма, сеть, адрес получателя.</li>
+            <li>Текст обращения в поддержку, если вы его отправляете.</li>
+          </ul>
+          <h2 class="relative z-10">Где они хранятся</h2>
+          <p class="relative z-10">Заказ записывается в локальное хранилище вашего браузера и виден на странице «Заказы» только на этом устройстве. Сайт сам никуда его не отправляет.</p>
+          <p class="relative z-10">Подтверждение оплаты и обращения в поддержку уходят только если вы нажимаете отправку в Telegram или на почту. Тогда сообщение получает контакт, опубликованный продавцом. Платёж в блокчейне виден сети той монеты, которой вы платите.</p>
+          <h2 class="relative z-10">Зачем</h2>
+          <p class="relative z-10">Контакт нужен, чтобы сверить оплату и передать аккаунт в ADSpower. Других целей у сайта нет. Сами аккаунты на этом сайте не хранятся: они находятся в ADSpower.</p>
+          <h2 class="relative z-10">Срок</h2>
+          <p class="relative z-10">Локальная копия заказа остаётся в браузере, пока вы не очистите данные сайта. Сообщение в Telegram или на почте хранится у получателя по правилам этого сервиса.</p>
+          <h2 class="relative z-10">Ваши действия</h2>
+          <p class="relative z-10">Вы можете не оставлять заказ, стереть данные сайта в браузере и написать продавцу, чтобы он удалил переписку со своей стороны. Для этого используйте контакт ниже.</p>
+          <h2 class="relative z-10">Контакт</h2>
+          <p id="seller-details" class="relative z-10"></p>
+        </article>
+      </main>
+      <footer class="glass glass-pill px-6 sm:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
+        <a href="/" class="brand"><img src="assets/logo.svg" width="22" height="22" alt="" class="brand-mark brand-mark-sm"><span class="font-semibold text-text-3 text-sm">© AURA 2026</span></a>
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm font-medium">
+          <a href="oferta.html" class="text-text-2 hover:text-text transition-colors">Оферта</a>
+          <a href="privacy.html" class="text-text hover:text-text transition-colors">Политика</a>
+          <a href="support.html" class="text-text-2 hover:text-text transition-colors">Поддержка</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="js/config.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/legal.js" defer></script>
+</body>
+</html>

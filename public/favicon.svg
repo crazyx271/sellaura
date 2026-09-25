@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="aura-grad" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FD3FF"/>
+      <stop offset="0.48" stop-color="#D2C4FF"/>
+      <stop offset="1" stop-color="#8B6CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#14161E"/>
+  <circle cx="32" cy="32" r="22" stroke="url(#aura-grad)" stroke-width="1.4" opacity="0.45"/>
+  <circle cx="32" cy="32" r="16" stroke="url(#aura-grad)" stroke-width="2.2"/>
+  <path fill="url(#aura-grad)" d="M32 18.2 21.8 44h4.6l1.85-4.75h7.5L37.6 44h4.6L32 18.2Zm0 8.4 2.7 7h-5.4l2.7-7Z"/>
+</svg>

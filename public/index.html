@@ -3,233 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="view-transition" content="same-origin">
+  <meta name="theme-color" content="#12141c">
+  <meta name="description" content="Готовые аккаунты MAX и Telegram в ADSpower. Передача только в этой программе. Оплата в крипте и замена в течение 24 часов.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="AURA — Готовые аккаунты MAX и Telegram">
+  <meta property="og:description" content="Страна, возраст и траст видны до оплаты. Оплата в крипте и замена в течение 24 часов.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
   <title>AURA — Готовые аккаунты MAX и Telegram</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <link href="https://api.fontshare.com/v2/css?f[]=manrope@400,500,600,700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            text: { DEFAULT: '#1C1C1E', 2: '#3A3A3C', 3: '#6E6E73' },
-            tg: '#229ED9',
-            max: '#6E56CF',
-            ok: '#248A3D',
-            warn: '#C93400'
-          },
-          fontFamily: {
-            sans: ['Manrope', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    @view-transition { navigation: auto; }
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: 0.4s;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .page-root {
-      min-height: 100vh;
-      color: #1C1C1E;
-      font-family: Manrope, system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      position: relative;
-      background: #E8EEF7;
-    }
-
-    .wallpaper {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse 90% 70% at 8% 6%, #FFC4A8 0%, transparent 52%),
-        radial-gradient(ellipse 80% 60% at 52% 42%, #7EC8FF 0%, #C5B4FF 55%, transparent 78%),
-        radial-gradient(ellipse 70% 55% at 92% 88%, #8B6CFF 0%, #2AABEE 45%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 70% 18%, rgba(255,255,255,0.85) 0%, transparent 60%),
-        linear-gradient(165deg, #F7EDE6 0%, #E8F2FF 40%, #EDE8FF 100%);
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: url(#liquid-refract) blur(60px);
-      opacity: 0.85;
-      will-change: transform;
-    }
-    .blob-a {
-      width: 520px; height: 520px;
-      top: -8%; left: -6%;
-      background: radial-gradient(circle, #FFC4A8 0%, rgba(255,196,168,0.3) 60%, transparent 70%);
-      animation: drift-a 24s ease-in-out infinite alternate;
-    }
-    .blob-b {
-      width: 640px; height: 640px;
-      top: 28%; left: 32%;
-      background: radial-gradient(circle, #7EC8FF 0%, #C5B4FF 50%, transparent 70%);
-      animation: drift-b 28s ease-in-out infinite alternate;
-    }
-    .blob-c {
-      width: 480px; height: 480px;
-      bottom: -10%; right: -4%;
-      background: radial-gradient(circle, #8B6CFF 0%, #2AABEE 55%, transparent 70%);
-      animation: drift-c 22s ease-in-out infinite alternate;
-    }
-    .blob-d {
-      width: 360px; height: 360px;
-      top: 12%; right: 18%;
-      background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 55%, transparent 70%);
-      filter: blur(40px);
-      opacity: 0.7;
-      animation: drift-d 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes drift-a {
-      from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(40px, 30px) scale(1.06); }
-    }
-    @keyframes drift-b {
-      from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(-50px, 20px) scale(1.04); }
-    }
-    @keyframes drift-c {
-      from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(-30px, -40px) scale(1.08); }
-    }
-    @keyframes drift-d {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-25px, 35px); }
-    }
-
-    .glass {
-      position: relative;
-      isolation: isolate;
-      background:
-        linear-gradient(165deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.08) 42%, rgba(255,255,255,0.22) 100%);
-      backdrop-filter: blur(48px) saturate(260%) contrast(1.08) brightness(1.06);
-      -webkit-backdrop-filter: blur(48px) saturate(260%) contrast(1.08) brightness(1.06);
-      border: 1px solid rgba(255,255,255,0.72);
-      border-radius: 28px;
-      box-shadow:
-        inset 0 1.5px 1px rgba(255,255,255,0.95),
-        inset 0 -12px 24px rgba(110,86,207,0.12),
-        inset 18px 0 28px rgba(34,158,217,0.10),
-        inset 0 -1px 1px rgba(255,255,255,0.25),
-        0 18px 50px rgba(40,50,80,0.16),
-        0 0 0 1px rgba(34,158,217,0.22),
-        0 0 0 2px rgba(196,92,255,0.12);
-    }
-    .glass::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 50% at 12% 8%, rgba(255,255,255,0.55) 0%, transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,0.7) 0%, transparent 36%);
-      opacity: 0.9;
-      mix-blend-mode: plus-lighter;
-    }
-
-    .glass-pill {
-      border-radius: 999px;
-    }
-
-    .glass-btn {
-      position: relative;
-      isolation: isolate;
-      background:
-        linear-gradient(165deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 42%, rgba(255,255,255,0.36) 100%);
-      backdrop-filter: blur(48px) saturate(260%) contrast(1.08) brightness(1.06);
-      -webkit-backdrop-filter: blur(48px) saturate(260%) contrast(1.08) brightness(1.06);
-      border: 1px solid rgba(255,255,255,0.82);
-      border-radius: 999px;
-      color: #1C1C1E;
-      font-weight: 600;
-      box-shadow:
-        inset 0 1.5px 1px rgba(255,255,255,0.95),
-        inset 0 -10px 20px rgba(110,86,207,0.10),
-        inset 14px 0 22px rgba(34,158,217,0.08),
-        0 12px 32px rgba(40,50,80,0.14),
-        0 0 0 1px rgba(34,158,217,0.18);
-      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
-    }
-    .glass-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(255,255,255,0.75) 0%, transparent 40%);
-      opacity: 0.85;
-    }
-    .glass-btn:hover {
-      transform: translateY(-4px);
-      filter: saturate(1.15);
-      box-shadow:
-        inset 0 1.5px 1px rgba(255,255,255,1),
-        inset 0 -14px 28px rgba(110,86,207,0.16),
-        inset 18px 0 28px rgba(34,158,217,0.12),
-        0 18px 44px rgba(40,50,80,0.2),
-        0 0 0 1px rgba(34,158,217,0.28);
-    }
-
-    .glass-card {
-      transition: transform 0.2s ease, filter 0.2s ease;
-    }
-    .glass-card:hover {
-      transform: translateY(-4px);
-      filter: saturate(1.15);
-    }
-
-    .chip {
-      border-radius: 999px;
-      padding: 0.5rem 1rem;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      color: #3A3A3C;
-      background: transparent;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-    .chip:hover {
-      background: rgba(255,255,255,0.28);
-      color: #1C1C1E;
-    }
-    .chip-active {
-      background: rgba(255,255,255,0.55);
-      color: #1C1C1E;
-      font-weight: 600;
-      border-color: rgba(255,255,255,0.7);
-      box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.9),
-        0 4px 14px rgba(40,50,80,0.1);
-    }
-
-    .text-tight { letter-spacing: -0.03em; }
-    .meta {
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .nav-island { view-transition-name: header; }
-  </style>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <div class="page-root">
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <svg class="svg-defs" aria-hidden="true">
       <filter id="liquid-refract" x="-20%" y="-20%" width="140%" height="140%">
         <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise"/>
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G"/>
@@ -245,314 +34,333 @@
 
     <div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-20 md:gap-28">
 
-      <!-- Floating nav island -->
-      <nav class="nav-island glass glass-pill sticky top-5 z-40 flex items-center justify-between gap-4 px-5 sm:px-6 py-3.5">
-        <a href="#" id="nav-home-link" class="font-semibold text-xl text-tight tracking-tight shrink-0">AURA</a>
-
-        <div class="hidden lg:flex items-center gap-7 text-[15px] font-medium text-text-2">
-          <a href="#catalog" id="nav-catalog-link" class="hover:text-text transition-colors">Витрина</a>
-          <a href="#catalog" id="nav-max-link" class="hover:text-text transition-colors">MAX</a>
-          <a href="#catalog" id="nav-tg-link" class="hover:text-text transition-colors">Telegram</a>
-          <a href="#how" id="nav-guarantee-link" class="hover:text-text transition-colors">Гарантии</a>
-          <a href="#" id="nav-support-link" class="hover:text-text transition-colors">Поддержка</a>
+      <nav class="nav-island glass sticky top-5 z-40 px-5 sm:px-6 py-3.5" aria-label="Основная навигация">
+        <div class="flex items-center justify-between gap-4">
+          <a href="/" class="brand shrink-0">
+            <img src="assets/logo.svg" width="32" height="32" alt="" class="brand-mark">
+            AURA
+          </a>
+          <div class="hidden lg:flex items-center gap-7 text-[15px] font-medium text-text-2">
+            <a href="#catalog" class="hover:text-text transition-colors">Витрина</a>
+            <a href="?platform=max#catalog" class="hover:text-text transition-colors">MAX</a>
+            <a href="?platform=tg#catalog" class="hover:text-text transition-colors">Telegram</a>
+            <a href="#how" class="hover:text-text transition-colors">Гарантии</a>
+            <a href="support.html" class="hover:text-text transition-colors">Поддержка</a>
+          </div>
+          <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+            <a href="orders.html" class="hidden sm:inline font-medium text-[15px] text-text-2 hover:text-text transition-colors">Заказы</a>
+            <a href="#catalog" class="glass-btn px-5 py-2.5 text-sm">Купить</a>
+            <button type="button" class="nav-toggle" id="nav-menu-btn" aria-expanded="false" aria-controls="mobile-nav">
+              <span class="sr-only">Меню</span>
+              <svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16"/>
+              </svg>
+            </button>
+          </div>
         </div>
-
-        <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-          <a href="#" id="nav-login-link" class="hidden sm:inline font-medium text-[15px] text-text-2 hover:text-text transition-colors">Войти</a>
-          <a href="#catalog" id="nav-buy-btn" class="glass-btn px-5 py-2.5 text-sm">Купить</a>
+        <div id="mobile-nav" class="mobile-nav" hidden>
+          <a href="#catalog">Витрина</a>
+          <a href="?platform=max#catalog">MAX</a>
+          <a href="?platform=tg#catalog">Telegram</a>
+          <a href="#how">Гарантии</a>
+          <a href="support.html">Поддержка</a>
+          <a href="orders.html">Заказы</a>
         </div>
       </nav>
 
       <main class="flex flex-col gap-24 md:gap-32 relative">
-
-        <!-- Hero -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div class="lg:col-span-7 flex flex-col items-start">
             <h1 class="text-4xl sm:text-5xl md:text-[64px] lg:text-[72px] font-semibold text-tight leading-[1.05] mb-6 max-w-3xl">
               Готовые аккаунты MAX и Telegram
             </h1>
             <p class="text-base md:text-lg lg:text-xl text-text-2 mb-10 max-w-xl leading-relaxed">
-              Страна, возраст и траст видны до оплаты. Эскроу и замена в течение 24 часов.
+              Страна, возраст и траст видны до оплаты. Все аккаунты находятся в ADSpower, передача — только в этой программе. Замена в течение 24 часов, если аккаунт невалиден.
             </p>
             <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-              <a href="#catalog" id="hero-catalog-btn" class="glass-btn px-7 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg">Смотреть витрину</a>
-              <a href="#how" id="hero-how-btn" class="glass glass-pill px-7 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg font-medium text-text-2 hover:text-text transition-colors">Как это работает</a>
+              <a href="#catalog" class="glass-btn px-7 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg">Смотреть витрину</a>
+              <a href="#how" class="glass glass-pill px-7 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg font-medium text-text-2 hover:text-text transition-colors">Как это работает</a>
             </div>
           </div>
 
           <div class="lg:col-span-5 relative h-[420px] sm:h-[480px] lg:h-[500px]">
-            <div class="absolute top-6 right-0 sm:right-4 w-[240px] sm:w-[280px] h-[300px] sm:h-[340px] glass rotate-6 flex flex-col p-6 hover:rotate-3 transition-transform duration-500 z-10">
-              <div class="flex justify-between items-center mb-auto relative z-10">
-                <span class="px-3 py-1 rounded-full meta text-tg" style="background:rgba(255,255,255,0.4)">Telegram</span>
-                <iconify-icon icon="logos:telegram" class="text-2xl"></iconify-icon>
-              </div>
-              <div class="relative z-10">
-                <div class="meta text-text-3 mb-1">Москва</div>
-                <div class="text-2xl font-semibold mb-1">2019 · 7 лет</div>
-                <div class="text-ok meta">Траст 97%</div>
+            <div class="hero-float hero-float-msk absolute top-6 right-0 sm:right-4 w-[240px] sm:w-[280px] h-[300px] sm:h-[340px] z-10">
+              <div class="hero-card glass h-full flex flex-col p-6 overflow-hidden">
+                <img class="hero-portrait" src="assets/portrait-moscow.jpg" alt="" width="840" height="1120" />
+                <div class="flex justify-between items-center mb-auto relative z-10">
+                  <span class="badge meta text-tg">Telegram</span>
+                  <svg class="icon text-tg" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M21.2 4.4 2.7 11.2c-.9.3-.9 1.1 0 1.4l4.7 1.5 1.8 5.5c.2.6.9.8 1.4.4l2.6-2.1 4.6 3.4c.7.5 1.7.1 1.9-.8l3.2-14.7c.2-1-.6-1.8-1.7-1.4ZM9 13.7l8.7-5.3c.4-.2.8.2.4.5l-7.2 6.6-.2 3.2-1.7-5z"/></svg>
+                </div>
+                <div class="relative z-10">
+                  <div class="meta text-text-3 mb-1">Москва</div>
+                  <div class="text-2xl font-semibold mb-1">2019 · 7 лет</div>
+                  <div class="text-ok meta">Траст 97%</div>
+                </div>
               </div>
             </div>
-
-            <div class="absolute bottom-6 left-0 sm:left-2 w-[240px] sm:w-[280px] h-[300px] sm:h-[340px] glass -rotate-3 flex flex-col p-6 hover:rotate-0 transition-transform duration-500 z-20">
-              <div class="flex justify-between items-center mb-auto relative z-10">
-                <span class="px-3 py-1 rounded-full meta text-max" style="background:rgba(255,255,255,0.4)">MAX</span>
-                <div class="w-7 h-7 rounded-full bg-max flex items-center justify-center text-white text-xs font-semibold">M</div>
-              </div>
-              <div class="relative z-10">
-                <div class="meta text-text-3 mb-1">Алматы</div>
-                <div class="text-2xl font-semibold mb-1">8 мес.</div>
-                <div class="text-ok meta">Траст 91%</div>
+            <div class="hero-float hero-float-ala absolute bottom-6 left-0 sm:left-2 w-[240px] sm:w-[280px] h-[300px] sm:h-[340px] z-20">
+              <div class="hero-card glass h-full flex flex-col p-6 overflow-hidden">
+                <img class="hero-portrait" src="assets/portrait-almaty.jpg" alt="" width="840" height="1120" />
+                <div class="flex justify-between items-center mb-auto relative z-10">
+                  <span class="badge meta text-max">MAX</span>
+                  <span class="w-7 h-7 rounded-full bg-max text-ink flex items-center justify-center text-xs font-semibold">M</span>
+                </div>
+                <div class="relative z-10">
+                  <div class="meta text-text-3 mb-1">Москва</div>
+                  <div class="text-2xl font-semibold mb-1">8 мес.</div>
+                  <div class="text-ok meta">Траст 91%</div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Trust -->
-        <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" aria-label="Условия">
           <div class="glass glass-pill px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 sm:gap-3">
-            <iconify-icon icon="lucide:shield-check" class="text-xl sm:text-2xl text-max shrink-0"></iconify-icon>
-            <span class="font-semibold text-sm sm:text-base">Эскроу оплата</span>
+            <svg class="icon text-max" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M16 15h2"/></svg>
+            <span class="font-semibold text-sm sm:text-base">Оплата в крипте</span>
           </div>
           <div class="glass glass-pill px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 sm:gap-3">
-            <iconify-icon icon="lucide:refresh-ccw" class="text-xl sm:text-2xl text-tg shrink-0"></iconify-icon>
+            <svg class="icon text-tg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M8 16H3v5"/></svg>
             <span class="font-semibold text-sm sm:text-base">Замена 24 часа</span>
           </div>
           <div class="glass glass-pill px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 sm:gap-3">
-            <iconify-icon icon="lucide:eye" class="text-xl sm:text-2xl text-max shrink-0"></iconify-icon>
+            <svg class="icon text-max" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
             <span class="font-semibold text-sm sm:text-base">Траст до оплаты</span>
           </div>
           <div class="glass glass-pill px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 sm:gap-3">
-            <iconify-icon icon="lucide:zap" class="text-xl sm:text-2xl text-tg shrink-0"></iconify-icon>
-            <span class="font-semibold text-sm sm:text-base">Мгновенный доступ</span>
+            <svg class="icon text-tg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+            <span class="font-semibold text-sm sm:text-base">Выдача в ADSpower</span>
           </div>
         </section>
 
-        <!-- Catalog -->
         <section id="catalog" class="flex flex-col gap-8">
           <div class="flex flex-col gap-2">
             <h2 class="text-4xl sm:text-5xl md:text-[56px] font-semibold text-tight">Витрина</h2>
-            <p class="text-text-2 text-base md:text-lg max-w-2xl">Фильтруйте по платформе, стране и возрасту — все параметры видны до оплаты.</p>
+            <p class="text-text-2 text-base md:text-lg max-w-2xl">Фильтруйте по платформе, стране и возрасту. Аккаунты хранятся в ADSpower и передаются только через эту программу.</p>
           </div>
 
-          <!-- Filter island: two rows -->
           <div class="glass p-3 sm:p-4 flex flex-col gap-3">
-            <div class="flex flex-wrap items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Платформа и страна">
               <span class="meta text-text-3 px-2 hidden sm:inline">Платформа</span>
-              <button type="button" class="chip chip-active" id="filter-all">Все</button>
-              <button type="button" class="chip" id="filter-max">MAX</button>
-              <button type="button" class="chip" id="filter-tg">Telegram</button>
-              <span class="hidden md:inline w-px h-5 bg-white/50 mx-1"></span>
+              <button type="button" class="chip chip-active" id="filter-all" aria-pressed="true">Все</button>
+              <button type="button" class="chip" id="filter-max" aria-pressed="false">MAX</button>
+              <button type="button" class="chip" id="filter-tg" aria-pressed="false">Telegram</button>
+              <span class="hidden md:inline w-px h-5 bg-white/20 mx-1"></span>
               <span class="meta text-text-3 px-2 hidden sm:inline">Страна</span>
-              <button type="button" class="chip" id="filter-country-rf">РФ</button>
-              <button type="button" class="chip" id="filter-country-kz">КЗ</button>
-              <button type="button" class="chip" id="filter-country-uz">УЗ</button>
-              <button type="button" class="chip" id="filter-country-eu">EU</button>
+              <button type="button" class="chip" id="filter-country-rf" aria-pressed="false">РФ</button>
+              <button type="button" class="chip" id="filter-country-kz" aria-pressed="false">КЗ</button>
+              <button type="button" class="chip" id="filter-country-uz" aria-pressed="false">УЗ</button>
+              <button type="button" class="chip" id="filter-country-eu" aria-pressed="false">EU</button>
             </div>
-            <div class="flex flex-wrap items-center gap-2 border-t border-white/30 pt-3">
+            <div class="flex flex-wrap items-center gap-2 border-t border-white/15 pt-3" role="group" aria-label="Возраст">
               <span class="meta text-text-3 px-2 hidden sm:inline">Возраст</span>
-              <button type="button" class="chip" id="filter-age-30d">от 30 дней</button>
-              <button type="button" class="chip" id="filter-age-1y">от 1 года</button>
-              <button type="button" class="chip" id="filter-age-3y">от 3 лет</button>
+              <button type="button" class="chip" id="filter-age-30d" aria-pressed="false">от 30 дней</button>
+              <button type="button" class="chip" id="filter-age-1y" aria-pressed="false">от 1 года</button>
+              <button type="button" class="chip" id="filter-age-3y" aria-pressed="false">от 3 лет</button>
             </div>
           </div>
 
-          <!-- 6 product cards 3×2 -->
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
-
-            <!-- 1 Telegram Москва -->
-            <article class="glass glass-card p-6 flex flex-col">
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="tg-msk-2019" data-platform="tg" data-country="rf" data-age-days="2555" data-price="4100" data-stock="200">
               <div class="flex justify-between items-start mb-5 relative z-10">
-                <div class="px-3 py-1 rounded-full meta text-tg flex items-center gap-1.5" style="background:rgba(255,255,255,0.4)">
-                  <iconify-icon icon="logos:telegram" width="14"></iconify-icon> Telegram
-                </div>
+                <div class="badge meta text-tg"><svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M21.2 4.4 2.7 11.2c-.9.3-.9 1.1 0 1.4l4.7 1.5 1.8 5.5c.2.6.9.8 1.4.4l2.6-2.1 4.6 3.4c.7.5 1.7.1 1.9-.8l3.2-14.7c.2-1-.6-1.8-1.7-1.4ZM9 13.7l8.7-5.3c.4-.2.8.2.4.5l-7.2 6.6-.2 3.2-1.7-5z"/></svg> Telegram</div>
                 <span class="meta text-text-3">Москва</span>
               </div>
               <h3 class="text-xl font-semibold mb-1 relative z-10">2019 · 7 лет</h3>
-              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · РФ</p>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
               <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                <div>
-                  <div class="meta text-text-3 mb-1">Траст</div>
-                  <div class="font-semibold text-ok">97%</div>
-                </div>
-                <div>
-                  <div class="meta text-text-3 mb-1">Наличие</div>
-                  <div class="font-medium">8 шт.</div>
-                </div>
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">97%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">200 шт.</div></div>
               </div>
-              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/35 relative z-10">
-                <div class="text-2xl font-semibold">2 190 ₽</div>
-                <button type="button" id="buy-card-1" class="glass-btn px-5 py-2 text-sm">Купить</button>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">4 100 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=tg-msk-2019">Купить</a>
               </div>
             </article>
 
-            <!-- 2 MAX Алматы -->
-            <article class="glass glass-card p-6 flex flex-col">
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="tg-msk-2020" data-platform="tg" data-country="rf" data-age-days="2190" data-price="3600" data-stock="250">
               <div class="flex justify-between items-start mb-5 relative z-10">
-                <div class="px-3 py-1 rounded-full meta text-max flex items-center gap-1.5" style="background:rgba(255,255,255,0.4)">
-                  <span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX
-                </div>
-                <span class="meta text-text-3">Алматы</span>
+                <div class="badge meta text-tg"><svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M21.2 4.4 2.7 11.2c-.9.3-.9 1.1 0 1.4l4.7 1.5 1.8 5.5c.2.6.9.8 1.4.4l2.6-2.1 4.6 3.4c.7.5 1.7.1 1.9-.8l3.2-14.7c.2-1-.6-1.8-1.7-1.4ZM9 13.7l8.7-5.3c.4-.2.8.2.4.5l-7.2 6.6-.2 3.2-1.7-5z"/></svg> Telegram</div>
+                <span class="meta text-text-3">Москва</span>
               </div>
-              <h3 class="text-xl font-semibold mb-1 relative z-10">8 мес.</h3>
-              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · КЗ</p>
+              <h3 class="text-xl font-semibold mb-1 relative z-10">2020 · 6 лет</h3>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
               <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                <div>
-                  <div class="meta text-text-3 mb-1">Траст</div>
-                  <div class="font-semibold text-ok">91%</div>
-                </div>
-                <div>
-                  <div class="meta text-text-3 mb-1">Наличие</div>
-                  <div class="font-medium">14 шт.</div>
-                </div>
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">96%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">250 шт.</div></div>
               </div>
-              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/35 relative z-10">
-                <div class="text-2xl font-semibold">1 640 ₽</div>
-                <button type="button" id="buy-card-2" class="glass-btn px-5 py-2 text-sm">Купить</button>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">3 600 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=tg-msk-2020">Купить</a>
               </div>
             </article>
 
-            <!-- 3 Telegram СПб -->
-            <article class="glass glass-card p-6 flex flex-col">
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="tg-msk-2021" data-platform="tg" data-country="rf" data-age-days="1825" data-price="3200" data-stock="300">
               <div class="flex justify-between items-start mb-5 relative z-10">
-                <div class="px-3 py-1 rounded-full meta text-tg flex items-center gap-1.5" style="background:rgba(255,255,255,0.4)">
-                  <iconify-icon icon="logos:telegram" width="14"></iconify-icon> Telegram
-                </div>
-                <span class="meta text-text-3">СПб</span>
+                <div class="badge meta text-tg"><svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M21.2 4.4 2.7 11.2c-.9.3-.9 1.1 0 1.4l4.7 1.5 1.8 5.5c.2.6.9.8 1.4.4l2.6-2.1 4.6 3.4c.7.5 1.7.1 1.9-.8l3.2-14.7c.2-1-.6-1.8-1.7-1.4ZM9 13.7l8.7-5.3c.4-.2.8.2.4.5l-7.2 6.6-.2 3.2-1.7-5z"/></svg> Telegram</div>
+                <span class="meta text-text-3">Москва</span>
               </div>
               <h3 class="text-xl font-semibold mb-1 relative z-10">2021 · 5 лет</h3>
-              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · РФ</p>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
               <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                <div>
-                  <div class="meta text-text-3 mb-1">Траст</div>
-                  <div class="font-semibold text-ok">94%</div>
-                </div>
-                <div>
-                  <div class="meta text-text-3 mb-1">Наличие</div>
-                  <div class="font-medium text-warn">4 шт.</div>
-                </div>
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">94%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">300 шт.</div></div>
               </div>
-              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/35 relative z-10">
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
                 <div class="text-2xl font-semibold">3 200 ₽</div>
-                <button type="button" id="buy-card-3" class="glass-btn px-5 py-2 text-sm">Купить</button>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=tg-msk-2021">Купить</a>
               </div>
             </article>
 
-            <!-- 4 MAX Москва -->
-            <article class="glass glass-card p-6 flex flex-col">
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="tg-msk-2022" data-platform="tg" data-country="rf" data-age-days="1460" data-price="2700" data-stock="350">
               <div class="flex justify-between items-start mb-5 relative z-10">
-                <div class="px-3 py-1 rounded-full meta text-max flex items-center gap-1.5" style="background:rgba(255,255,255,0.4)">
-                  <span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX
-                </div>
+                <div class="badge meta text-tg"><svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M21.2 4.4 2.7 11.2c-.9.3-.9 1.1 0 1.4l4.7 1.5 1.8 5.5c.2.6.9.8 1.4.4l2.6-2.1 4.6 3.4c.7.5 1.7.1 1.9-.8l3.2-14.7c.2-1-.6-1.8-1.7-1.4ZM9 13.7l8.7-5.3c.4-.2.8.2.4.5l-7.2 6.6-.2 3.2-1.7-5z"/></svg> Telegram</div>
+                <span class="meta text-text-3">Москва</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-1 relative z-10">2022 · 4 года</h3>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
+              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">92%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">350 шт.</div></div>
+              </div>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">2 700 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=tg-msk-2022">Купить</a>
+              </div>
+            </article>
+
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="tg-msk-2023" data-platform="tg" data-country="rf" data-age-days="1095" data-price="2190" data-stock="400">
+              <div class="flex justify-between items-start mb-5 relative z-10">
+                <div class="badge meta text-tg"><svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M21.2 4.4 2.7 11.2c-.9.3-.9 1.1 0 1.4l4.7 1.5 1.8 5.5c.2.6.9.8 1.4.4l2.6-2.1 4.6 3.4c.7.5 1.7.1 1.9-.8l3.2-14.7c.2-1-.6-1.8-1.7-1.4ZM9 13.7l8.7-5.3c.4-.2.8.2.4.5l-7.2 6.6-.2 3.2-1.7-5z"/></svg> Telegram</div>
+                <span class="meta text-text-3">Москва</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-1 relative z-10">2023 · 3 года</h3>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
+              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">90%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">400 шт.</div></div>
+              </div>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">2 190 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=tg-msk-2023">Купить</a>
+              </div>
+            </article>
+
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="max-msk-4m" data-platform="max" data-country="rf" data-age-days="120" data-price="1290" data-stock="250">
+              <div class="flex justify-between items-start mb-5 relative z-10">
+                <div class="badge meta text-max"><span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX</div>
+                <span class="meta text-text-3">Москва</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-1 relative z-10">4 мес.</h3>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
+              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold">84%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">250 шт.</div></div>
+              </div>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">1 290 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=max-msk-4m">Купить</a>
+              </div>
+            </article>
+
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="max-msk-8m" data-platform="max" data-country="rf" data-age-days="240" data-price="1640" data-stock="250">
+              <div class="flex justify-between items-start mb-5 relative z-10">
+                <div class="badge meta text-max"><span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX</div>
+                <span class="meta text-text-3">Москва</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-1 relative z-10">8 мес.</h3>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
+              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">91%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">250 шт.</div></div>
+              </div>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">1 640 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=max-msk-8m">Купить</a>
+              </div>
+            </article>
+
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="max-msk-2y" data-platform="max" data-country="rf" data-age-days="730" data-price="2190" data-stock="250">
+              <div class="flex justify-between items-start mb-5 relative z-10">
+                <div class="badge meta text-max"><span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX</div>
                 <span class="meta text-text-3">Москва</span>
               </div>
               <h3 class="text-xl font-semibold mb-1 relative z-10">2024 · 2 года</h3>
-              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · РФ</p>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
               <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                <div>
-                  <div class="meta text-text-3 mb-1">Траст</div>
-                  <div class="font-semibold">88%</div>
-                </div>
-                <div>
-                  <div class="meta text-text-3 mb-1">Наличие</div>
-                  <div class="font-medium">6 шт.</div>
-                </div>
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold">88%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">250 шт.</div></div>
               </div>
-              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/35 relative z-10">
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
+                <div class="text-2xl font-semibold">2 190 ₽</div>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=max-msk-2y">Купить</a>
+              </div>
+            </article>
+
+            <article class="glass glass-card p-6 flex flex-col" data-product data-id="max-msk-3y" data-platform="max" data-country="rf" data-age-days="1095" data-price="2780" data-stock="250">
+              <div class="flex justify-between items-start mb-5 relative z-10">
+                <div class="badge meta text-max"><span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX</div>
+                <span class="meta text-text-3">Москва</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-1 relative z-10">2023 · 3 года</h3>
+              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · Москва</p>
+              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
+                <div><div class="meta text-text-3 mb-1">Траст</div><div class="font-semibold text-ok">93%</div></div>
+                <div><div class="meta text-text-3 mb-1">Наличие</div><div class="font-medium text-ok">250 шт.</div></div>
+              </div>
+              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/15 relative z-10">
                 <div class="text-2xl font-semibold">2 780 ₽</div>
-                <button type="button" id="buy-card-4" class="glass-btn px-5 py-2 text-sm">Купить</button>
+                <a class="glass-btn px-5 py-2 text-sm" href="checkout.html?id=max-msk-3y">Купить</a>
               </div>
             </article>
+          </div>
 
-            <!-- 5 Telegram EU -->
-            <article class="glass glass-card p-6 flex flex-col">
-              <div class="flex justify-between items-start mb-5 relative z-10">
-                <div class="px-3 py-1 rounded-full meta text-tg flex items-center gap-1.5" style="background:rgba(255,255,255,0.4)">
-                  <iconify-icon icon="logos:telegram" width="14"></iconify-icon> Telegram
-                </div>
-                <span class="meta text-text-3">EU</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-1 relative z-10">2020 · 6 лет</h3>
-              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · EU</p>
-              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                <div>
-                  <div class="meta text-text-3 mb-1">Траст</div>
-                  <div class="font-semibold text-ok">96%</div>
-                </div>
-                <div>
-                  <div class="meta text-text-3 mb-1">Наличие</div>
-                  <div class="font-medium text-warn">3 шт.</div>
-                </div>
-              </div>
-              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/35 relative z-10">
-                <div class="text-2xl font-semibold">4 100 ₽</div>
-                <button type="button" id="buy-card-5" class="glass-btn px-5 py-2 text-sm">Купить</button>
-              </div>
-            </article>
-
-            <!-- 6 MAX Казань -->
-            <article class="glass glass-card p-6 flex flex-col">
-              <div class="flex justify-between items-start mb-5 relative z-10">
-                <div class="px-3 py-1 rounded-full meta text-max flex items-center gap-1.5" style="background:rgba(255,255,255,0.4)">
-                  <span class="w-2.5 h-2.5 rounded-full bg-max inline-block"></span> MAX
-                </div>
-                <span class="meta text-text-3">Казань</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-1 relative z-10">4 мес.</h3>
-              <p class="text-text-2 text-sm mb-5 relative z-10">Проверенный аккаунт · РФ</p>
-              <div class="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                <div>
-                  <div class="meta text-text-3 mb-1">Траст</div>
-                  <div class="font-semibold">84%</div>
-                </div>
-                <div>
-                  <div class="meta text-text-3 mb-1">Наличие</div>
-                  <div class="font-medium text-ok">22 шт.</div>
-                </div>
-              </div>
-              <div class="mt-auto flex items-center justify-between pt-5 border-t border-white/35 relative z-10">
-                <div class="text-2xl font-semibold">1 290 ₽</div>
-                <button type="button" id="buy-card-6" class="glass-btn px-5 py-2 text-sm">Купить</button>
-              </div>
-            </article>
-
+          <div id="catalog-empty" class="glass p-8 text-center" hidden>
+            <p class="text-lg font-semibold mb-2">Таких аккаунтов сейчас нет</p>
+            <p class="text-text-2 mb-5">Снимите часть фильтров или откройте всю витрину.</p>
+            <button type="button" id="filter-reset" class="glass-btn px-5 py-2.5 text-sm">Сбросить фильтры</button>
           </div>
         </section>
 
-        <!-- How it works -->
         <section id="how" class="flex flex-col gap-10">
           <h2 class="text-3xl sm:text-4xl md:text-[40px] font-semibold text-tight text-center">Как это работает</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             <div class="glass p-7 sm:p-8 flex flex-col gap-4">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold relative z-10" style="background:rgba(255,255,255,0.55)">1</div>
+              <div class="step-index relative z-10">1</div>
               <h3 class="text-xl font-semibold relative z-10">Выбрать</h3>
               <p class="text-text-2 relative z-10 leading-relaxed">Изучите витрину, выберите платформу, страну и возраст. Траст и наличие открыты до оплаты.</p>
             </div>
             <div class="glass p-7 sm:p-8 flex flex-col gap-4">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold relative z-10" style="background:rgba(255,255,255,0.55)">2</div>
-              <h3 class="text-xl font-semibold relative z-10">Оплатить в эскроу</h3>
-              <p class="text-text-2 relative z-10 leading-relaxed">Средства замораживаются до успешной проверки аккаунта вами.</p>
+              <div class="step-index relative z-10">2</div>
+              <h3 class="text-xl font-semibold relative z-10">Оплатить криптой</h3>
+              <p class="text-text-2 relative z-10 leading-relaxed">Выберите количество и сеть USDT: TRC-20, BSC, TON или Solana. Перевод идёт напрямую на адрес этой сети.</p>
             </div>
             <div class="glass p-7 sm:p-8 flex flex-col gap-4">
-              <div class="w-10 h-10 rounded-full bg-max/20 text-max flex items-center justify-center font-semibold relative z-10">3</div>
+              <div class="step-index bg-max/20 text-max relative z-10">3</div>
               <h3 class="text-xl font-semibold relative z-10">Получить доступ</h3>
-              <p class="text-text-2 relative z-10 leading-relaxed">Мгновенная передача данных. Замена в течение 24 часов при невалиде.</p>
+              <p class="text-text-2 relative z-10 leading-relaxed">После проверки оплаты аккаунт передаётся только в программе ADSpower. Все аккаунты находятся там, другим способом выдача не делается.</p>
             </div>
           </div>
         </section>
-
       </main>
 
-      <!-- Footer island -->
       <footer class="glass glass-pill px-6 sm:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
-        <span class="font-semibold text-text-3 text-sm">© AURA 2026</span>
+        <a href="/" class="brand">
+          <img src="assets/logo.svg" width="22" height="22" alt="" class="brand-mark brand-mark-sm">
+          <span class="font-semibold text-text-3 text-sm">© AURA 2026</span>
+        </a>
         <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm font-medium">
-          <a href="#" id="footer-oferta-link" class="text-text-2 hover:text-text transition-colors">Оферта</a>
-          <a href="#" id="footer-policy-link" class="text-text-2 hover:text-text transition-colors">Политика</a>
-          <a href="#" id="footer-support-link" class="text-text-2 hover:text-text transition-colors">Поддержка</a>
+          <a href="oferta.html" class="text-text-2 hover:text-text transition-colors">Оферта</a>
+          <a href="privacy.html" class="text-text-2 hover:text-text transition-colors">Политика</a>
+          <a href="support.html" class="text-text-2 hover:text-text transition-colors">Поддержка</a>
         </div>
       </footer>
-
     </div>
   </div>
+  <script src="js/config.js" defer></script>
+  <script src="js/catalog-data.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/catalog.js" defer></script>
 </body>
 </html>
