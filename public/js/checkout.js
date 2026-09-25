@@ -38,7 +38,6 @@
   const walletEl = document.getElementById("co-wallet");
   const copyWalletBtn = document.getElementById("copy-wallet");
   const copyAmountBtn = document.getElementById("copy-amount");
-  const banner = document.getElementById("pay-off");
   const payBox = document.getElementById("pay-box");
   const methodsEl = document.getElementById("pay-methods");
   const qtyValue = document.getElementById("qty-value");
@@ -119,8 +118,7 @@
   paintQty();
   paintMethod();
 
-  if (banner) banner.hidden = ready;
-  if (payBox) payBox.hidden = !ready;
+  if (payBox) payBox.hidden = false;
   if (submitBtn) submitBtn.disabled = !ready;
 
   async function copyText(text, button) {
