@@ -19,8 +19,8 @@
       ageLabel: "2019 · 7 лет",
       ageDays: 2555,
       trust: 97,
-      stock: 8,
-      price: 1500,
+      stock: 1500,
+      price: 2190,
       blurb: "Проверенный аккаунт · РФ"
     },
     {
@@ -33,8 +33,8 @@
       ageLabel: "8 мес.",
       ageDays: 240,
       trust: 91,
-      stock: 14,
-      price: 1000,
+      stock: 1000,
+      price: 1640,
       blurb: "Проверенный аккаунт · КЗ"
     },
     {
@@ -47,8 +47,8 @@
       ageLabel: "2021 · 5 лет",
       ageDays: 1825,
       trust: 94,
-      stock: 4,
-      price: 1500,
+      stock: 1500,
+      price: 3200,
       blurb: "Проверенный аккаунт · РФ"
     },
     {
@@ -61,8 +61,8 @@
       ageLabel: "2024 · 2 года",
       ageDays: 730,
       trust: 88,
-      stock: 6,
-      price: 1000,
+      stock: 1000,
+      price: 2780,
       blurb: "Проверенный аккаунт · РФ"
     },
     {
@@ -75,8 +75,8 @@
       ageLabel: "2020 · 6 лет",
       ageDays: 2190,
       trust: 96,
-      stock: 3,
-      price: 1500,
+      stock: 1500,
+      price: 4100,
       blurb: "Проверенный аккаунт · EU"
     },
     {
@@ -89,8 +89,8 @@
       ageLabel: "4 мес.",
       ageDays: 120,
       trust: 84,
-      stock: 22,
-      price: 1000,
+      stock: 1000,
+      price: 1290,
       blurb: "Проверенный аккаунт · РФ"
     }
   ];
