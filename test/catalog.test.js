@@ -5,15 +5,17 @@ const catalog = require("../public/js/catalog-data.js");
 
 test("catalog matches filters", () => {
   const { products, matches } = catalog;
-  assert.equal(products.filter((item) => matches(item, { platform: "tg" })).length, 3);
-  assert.equal(products.filter((item) => matches(item, { platform: "max" })).length, 3);
+  const stock = (platform) => products.filter((item) => item.platform === platform).reduce((sum, item) => sum + item.stock, 0);
+  assert.equal(stock("tg"), 1500);
+  assert.equal(stock("max"), 1000);
+  assert.equal(products.every((item) => item.city === "Москва"), true);
+  assert.equal(products.filter((item) => matches(item, { platform: "tg" })).length, 5);
+  assert.equal(products.filter((item) => matches(item, { platform: "max" })).length, 4);
   assert.equal(products.filter((item) => matches(item, { country: "uz" })).length, 0);
-  assert.equal(products.filter((item) => matches(item, { country: "rf" })).length, 4);
-  assert.equal(products.filter((item) => matches(item, { age: "3y" })).length, 3);
-  assert.equal(products.filter((item) => matches(item, { platform: "max", age: "1y" })).length, 1);
-  const kazan = products.find((item) => item.id === "max-kzn-4m");
-  assert.equal(matches(kazan, { age: "30d" }), true);
-  assert.equal(matches(kazan, { age: "1y" }), false);
+  assert.equal(products.filter((item) => matches(item, { country: "rf" })).length, 9);
+  const young = products.find((item) => item.id === "max-msk-4m");
+  assert.equal(matches(young, { age: "30d" }), true);
+  assert.equal(matches(young, { age: "1y" }), false);
 });
 
 test("homepage cards stay in sync with the catalog", () => {
@@ -36,6 +38,11 @@ test("homepage cards stay in sync with the catalog", () => {
   }
 });
 
+test("manifest opens the site root", () => {
+  const manifest = JSON.parse(fs.readFileSync("public/site.webmanifest", "utf8"));
+  assert.equal(manifest.start_url, "/");
+});
+
 test("public pages have no dead hash links or the Tailwind CDN", () => {
   const files = [
     "public/index.html",
@@ -50,6 +57,7 @@ test("public pages have no dead hash links or the Tailwind CDN", () => {
     const html = fs.readFileSync(file, "utf8");
     assert.equal(html.includes("cdn.tailwindcss.com"), false, file);
     assert.equal(html.includes('href="#"'), false, file);
+    assert.equal(html.includes("index.html"), false, file);
     assert.equal(html.includes("assets/logo.svg"), true, file);
   }
 });
