@@ -172,7 +172,7 @@
     successEl.hidden = false;
     document.getElementById("success-id").textContent = order.id;
     document.getElementById("success-status").textContent = found
-      ? "Перевод найден в сети " + order.network + ". Доступ отправим на контакт из заказа."
+      ? "Перевод найден в сети " + order.network + ". Аккаунт передадим только в ADSpower: все аккаунты находятся там."
       : "Перевод пока не найден. Если транзакция только что ушла, подождите подтверждения сети и проверьте заказ ещё раз.";
     const proof = pay.proofText(order);
     document.getElementById("success-proof").textContent = proof;
