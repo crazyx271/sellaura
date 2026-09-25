@@ -3,4 +3,4 @@ AddDefaultCharset UTF-8
 ErrorDocument 404 /404.html
 RewriteEngine On
 RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
-RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^index\.html$ https://aura-cpm.com/ [R=301,L]
